@@ -21,6 +21,12 @@
     - /etc/cloud
     - /var/lib/cloud
 
+- name: Install netplan
+  apt:
+    name: netplan.io
+    state: present
+    update_cache: yes
+
 - name: Set fixed static IP
   template:
     src: "{{ role_path }}/templates/network.j2"
@@ -104,5 +110,9 @@
     - OnAccessPrevention yes
     - OnAccessExtraScanning true
     - OnAccessExcludeUID 0
-    - User root
+- name: Change clamd user       
+  replace:
+    path: /etc/clamav/clamd.conf
+    regexp: 'User clamav'
+    replace: "User root"
 
