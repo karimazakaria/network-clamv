@@ -106,7 +106,8 @@
     line: '{{ item }}'
   with_items:
     - ScanOnAccess true
-    - OnAccessIncludePath /var/log
+    - OnAccessIncludePath /
+    - OnAccessExcludePath /var/log  
     - OnAccessPrevention yes
     - OnAccessExtraScanning true
     - OnAccessExcludeUID 0
