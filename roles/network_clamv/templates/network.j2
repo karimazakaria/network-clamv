@@ -1,0 +1,10 @@
+network:
+  ethernets:
+    {{ DEVICE_NAME }}:
+      dhcp4: no
+      addresses: [{{ IP_CIDR }}]
+      gateway4: {{ GATEWAY }}
+      nameservers:
+        addresses: [{{ DNS1 }},{{ DNS2 }}]
+  version: 2
+
